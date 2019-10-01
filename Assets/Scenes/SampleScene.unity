@@ -1201,7 +1201,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 614433248}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1115339646}
+        m_MethodName: LevelUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &614433248
@@ -2372,6 +2383,7 @@ GameObject:
   - component: {fileID: 1115339645}
   - component: {fileID: 1115339644}
   - component: {fileID: 1115339643}
+  - component: {fileID: 1115339648}
   m_Layer: 0
   m_Name: Fencer
   m_TagString: Untagged
@@ -2409,10 +2421,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e43357f6537d17f4992e5332830c930a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
-  _class: 
-  _race: 
-  level: 0
+  _name: Clarioo
+  _class: Fencer
+  _race: None
+  level: 1
 --- !u!114 &1115339645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2451,6 +2463,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1115339648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115339642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a7b6fa3f495164784717029b704e5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelTxt: {fileID: 120868696}
+  strenghtTxt: {fileID: 1972358428}
+  vitalityTxt: {fileID: 752641843}
+  intelligenceTxt: {fileID: 892947582}
+  dexterityTxt: {fileID: 580375270}
 --- !u!1 &1149570912
 GameObject:
   m_ObjectHideFlags: 0
@@ -3000,8 +3029,6 @@ GameObject:
   - component: {fileID: 1550614565}
   - component: {fileID: 1550614564}
   - component: {fileID: 1550614563}
-  - component: {fileID: 1550614567}
-  - component: {fileID: 1550614566}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -3057,32 +3084,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1550614566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550614562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d92be42ffbf2e5b4bb560dd8828a7a81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  basicBattleStatsMultiplierKeys: []
-  basicBattleStatsMultipierValues: 
---- !u!114 &1550614567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550614562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09f11249b4aff1841971eb519d6c692c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1595163752
 GameObject:
   m_ObjectHideFlags: 0
