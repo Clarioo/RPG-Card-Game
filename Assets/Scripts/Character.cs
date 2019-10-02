@@ -8,6 +8,8 @@ public class Character : Playable
     BattleStatistics battleStatistics;
     StatisticsLevelUpdate statisticsLevelUpdate;
     CharacterUIView characterUIView;
+    BasicStatsUIView basicStatsUIView;
+    DuelStatsUIView duelStatsUIView;
 
     private void Start()
     {
@@ -16,22 +18,21 @@ public class Character : Playable
         UpdateStatisticUI();
     }
 
-    public override CharacterInformation GetCharacterInformation()
-    {
-        return characterInformation;
-    }
-
-    public override BattleStatistics GetBattleStatistics()
-    {
-        return battleStatistics;
-    }
-
     private void InitializeBattleStatisticOnGameStart()
     {
         battleStatistics = new BattleStatistics();
         battleStatistics.basicStatistics = new BasicStatistics(statisticsLevelUpdate.StrenghtMultiplier, statisticsLevelUpdate.VitalityMultiplier, statisticsLevelUpdate.IntelligenceMultiplier, statisticsLevelUpdate.DexterityMultiplier);
+        InitializeDuelStatistics(characterInformation._Level);
     }
 
+    private void InitializeDuelStatistics(float level)
+    {
+        float attackDamage = statisticsLevelUpdate.GetBaseCalculatedAttackDamage(level);
+        float armour = statisticsLevelUpdate.GetBaseCalculatedArmour(level);
+        float health = statisticsLevelUpdate.GetBaseCalculatedHealth(level);
+        float mana = statisticsLevelUpdate.GetBaseCalculatedMana(level);
+        battleStatistics.duelStatistics = new DuelStatistics(attackDamage, armour, health, mana);
+    }
     public override void UpdateStatisticsBasedOnLevel()
     {
         battleStatistics.basicStatistics.UpdateBaseStrenght(characterInformation._Level, statisticsLevelUpdate.StrenghtMultiplier);
@@ -39,11 +40,14 @@ public class Character : Playable
         battleStatistics.basicStatistics.UpdateBaseIntelligence(characterInformation._Level, statisticsLevelUpdate.IntelligenceMultiplier);
         battleStatistics.basicStatistics.UpdateBaseDexterity(characterInformation._Level, statisticsLevelUpdate.DexterityMultiplier);
         UpdateCurrentStats();
+        battleStatistics.duelStatistics.UpdateDuelStatistics(characterInformation._Level, statisticsLevelUpdate);
     }
+
     private void UpdateCurrentStats()
     {
         battleStatistics.basicStatistics.UpdateCurrentStatsBasedOnBaseStats();
     }
+
     public override void LevelUp()
     {
         characterInformation._Level++;
@@ -58,12 +62,9 @@ public class Character : Playable
     }
     private void UpdateStatisticUI()
     {
-        float strenghtCurr = battleStatistics.basicStatistics.strenght.GetCurrentValue();
-        float vitalityCurr = battleStatistics.basicStatistics.vitality.GetCurrentValue();
-        float intelligenceCurr = battleStatistics.basicStatistics.intelligence.GetCurrentValue();
-        float dexterityCurr = battleStatistics.basicStatistics.dexterity.GetCurrentValue();
-        characterUIView.UpdateLevelText(characterInformation._Level);
-        characterUIView.UpdateBasicStatsUI(strenghtCurr, vitalityCurr, intelligenceCurr, dexterityCurr);
+        basicStatsUIView.UpdateLevelText(characterInformation._Level);
+        basicStatsUIView.UpdateBasicStatsUI(battleStatistics.basicStatistics);
+        duelStatsUIView.SetDuelStatsValuesOnUI(battleStatistics.duelStatistics);
     }
 
     private void GetPlayerComponents()
@@ -72,6 +73,8 @@ public class Character : Playable
         battleStatistics = GetComponent<BattleStatistics>();
         statisticsLevelUpdate = GetComponent<StatisticsLevelUpdate>();
         characterUIView = GetComponent<CharacterUIView>();
+        basicStatsUIView = GetComponent<BasicStatsUIView>();
+        duelStatsUIView = GetComponent<DuelStatsUIView>();
     }
 
 

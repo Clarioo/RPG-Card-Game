@@ -5,7 +5,7 @@ using UnityEngine;
 public class BattleStatistics : MonoBehaviour {
 
     public BasicStatistics basicStatistics;
-    public Dictionary<string, Statistic> duelStats;
+    public DuelStatistics duelStatistics;
     public Dictionary<string, Statistic> elementalAttack;
     public Dictionary<string, Statistic> elementalDefense;
 	// Use this for initialization

@@ -5,6 +5,10 @@ using UnityEngine;
 public class StatisticsLevelUpdate : MonoBehaviour
 {
     [SerializeField] float strenghtMultiplier, vitalityMultiplier, intelligenceMultiplier, dexterityMultiplier;
+    [SerializeField] float baseAttackDamage, attackDamageMultiplier;
+    [SerializeField] float baseArmour, armourMultiplier;
+    [SerializeField] float baseHealth, healthMultiplier;
+    [SerializeField] float baseMana, manaMultiplier;
 
     public float StrenghtMultiplier
     {
@@ -22,9 +26,22 @@ public class StatisticsLevelUpdate : MonoBehaviour
     {
         get { return dexterityMultiplier; }
     }
-    // Update is called once per frame
-    void Update()
+    
+    public float GetBaseCalculatedAttackDamage(float level)
     {
-        
+        return baseAttackDamage + attackDamageMultiplier * level;
     }
+    public float GetBaseCalculatedArmour(float level)
+    {
+        return baseArmour + armourMultiplier * level;
+    }
+    public float GetBaseCalculatedHealth(float level)
+    {
+        return baseHealth + healthMultiplier * level;
+    }
+    public float GetBaseCalculatedMana(float level)
+    {
+        return baseMana + manaMultiplier * level;
+    }
+
 }

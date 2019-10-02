@@ -9,7 +9,7 @@ public class Strenght : Statistic
         Name = "Strenght";
         Type = "General";
         BaseValue = baseValue;
-        CurrentValue = CurrentValue;
+        CurrentValue = currentValue;
     }
     
     public float IncreaseCurrentValue(float addedStrenght)

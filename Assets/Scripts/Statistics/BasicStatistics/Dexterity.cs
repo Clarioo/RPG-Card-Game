@@ -9,7 +9,7 @@ public class Dexterity : Statistic
         Name = "Dexterity";
         Type = "General";
         BaseValue = baseValue;
-        CurrentValue = CurrentValue;
+        CurrentValue = currentValue;
     }
     public float IncreaseCurrentValue(float addedDexterity)
     {

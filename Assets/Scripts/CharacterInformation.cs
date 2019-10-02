@@ -22,6 +22,10 @@ public class CharacterInformation : MonoBehaviour
     public int _Level
     {
         get { return level; }
-        set { level = value; }
+        set { if (level + value <= 1)
+                level = 1;
+            else
+                level = value;
+            }
     }
 }

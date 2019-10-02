@@ -9,7 +9,7 @@ public class Intelligence : Statistic
         Name = "Intelligence";
         Type = "General";
         BaseValue = baseValue;
-        CurrentValue = CurrentValue;
+        CurrentValue = currentValue;
     }
     public float IncreaseCurrentValue(float addedIntelligence)
     {

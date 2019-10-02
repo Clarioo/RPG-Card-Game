@@ -9,7 +9,7 @@ public class Vitality : Statistic
         Name = "Vitality";
         Type = "General";
         BaseValue = baseValue;
-        CurrentValue = CurrentValue;
+        CurrentValue = currentValue;
     }
 
     public float IncreaseCurrentValue(float addedVitality)
