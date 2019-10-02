@@ -4,26 +4,23 @@ using UnityEngine;
 
 public class StatisticsLevelUpdate : MonoBehaviour
 {
-    [SerializeField] List<string> basicBattleStatsMultiplierKeys;
-    [SerializeField] List<int> basicBattleStatsMultipierValues;
-    public Dictionary<string, int> basicBattleStatsLevelMultiplier;
-    
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] float strenghtMultiplier, vitalityMultiplier, intelligenceMultiplier, dexterityMultiplier;
+
+    public float StrenghtMultiplier
     {
-        FillBasicBattleStatsLevelMultiplier();   
+        get { return strenghtMultiplier; }
     }
-
-    private void FillBasicBattleStatsLevelMultiplier()
+    public float VitalityMultiplier
     {
-        basicBattleStatsLevelMultiplier = new Dictionary<string, int>()
-        {
-            { basicBattleStatsMultiplierKeys[0], basicBattleStatsMultipierValues[0] },
-            { basicBattleStatsMultiplierKeys[1], basicBattleStatsMultipierValues[1] },
-            { basicBattleStatsMultiplierKeys[2], basicBattleStatsMultipierValues[2] },
-            { basicBattleStatsMultiplierKeys[3], basicBattleStatsMultipierValues[3] }
-
-        };
+        get { return vitalityMultiplier; }
+    }
+    public float IntelligenceMultiplier
+    {
+        get { return intelligenceMultiplier; }
+    }
+    public float DexterityMultiplier
+    {
+        get { return dexterityMultiplier; }
     }
     // Update is called once per frame
     void Update()

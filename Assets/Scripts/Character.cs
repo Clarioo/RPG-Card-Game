@@ -28,24 +28,21 @@ public class Character : Playable
 
     private void InitializeBattleStatisticOnGameStart()
     {
-        battleStatistics = new BattleStatistics(0, 0, 0, 0);
-        UpdateStatisticsBasedOnLevel();
+        battleStatistics = new BattleStatistics();
+        battleStatistics.basicStatistics = new BasicStatistics(statisticsLevelUpdate.StrenghtMultiplier, statisticsLevelUpdate.VitalityMultiplier, statisticsLevelUpdate.IntelligenceMultiplier, statisticsLevelUpdate.DexterityMultiplier);
     }
 
     public override void UpdateStatisticsBasedOnLevel()
     {
-        battleStatistics.generalStats["Strenght"].BaseValue = statisticsLevelUpdate.basicBattleStatsLevelMultiplier["Strenght"] * characterInformation._Level;
-        battleStatistics.generalStats["Vitality"].BaseValue = statisticsLevelUpdate.basicBattleStatsLevelMultiplier["Vitality"] * characterInformation._Level;
-        battleStatistics.generalStats["Intelligence"].BaseValue = statisticsLevelUpdate.basicBattleStatsLevelMultiplier["Intelligence"] * characterInformation._Level;
-        battleStatistics.generalStats["Dexterity"].BaseValue = statisticsLevelUpdate.basicBattleStatsLevelMultiplier["Dexterity"] * characterInformation._Level;
+        battleStatistics.basicStatistics.UpdateBaseStrenght(characterInformation._Level, statisticsLevelUpdate.StrenghtMultiplier);
+        battleStatistics.basicStatistics.UpdateBaseVitality(characterInformation._Level, statisticsLevelUpdate.VitalityMultiplier);
+        battleStatistics.basicStatistics.UpdateBaseIntelligence(characterInformation._Level, statisticsLevelUpdate.IntelligenceMultiplier);
+        battleStatistics.basicStatistics.UpdateBaseDexterity(characterInformation._Level, statisticsLevelUpdate.DexterityMultiplier);
         UpdateCurrentStats();
     }
     private void UpdateCurrentStats()
     {
-        battleStatistics.generalStats["Strenght"].CurrentValue = battleStatistics.generalStats["Strenght"].BaseValue;
-        battleStatistics.generalStats["Vitality"].CurrentValue = battleStatistics.generalStats["Vitality"].BaseValue;
-        battleStatistics.generalStats["Intelligence"].CurrentValue = battleStatistics.generalStats["Intelligence"].BaseValue;
-        battleStatistics.generalStats["Dexterity"].CurrentValue = battleStatistics.generalStats["Dexterity"].BaseValue;
+        battleStatistics.basicStatistics.UpdateCurrentStatsBasedOnBaseStats();
     }
     public override void LevelUp()
     {
@@ -53,10 +50,20 @@ public class Character : Playable
         UpdateStatisticsBasedOnLevel();
         UpdateStatisticUI();
     }
+    public void LevelDown()
+    {
+        characterInformation._Level--;
+        UpdateStatisticsBasedOnLevel();
+        UpdateStatisticUI();
+    }
     private void UpdateStatisticUI()
     {
+        float strenghtCurr = battleStatistics.basicStatistics.strenght.GetCurrentValue();
+        float vitalityCurr = battleStatistics.basicStatistics.vitality.GetCurrentValue();
+        float intelligenceCurr = battleStatistics.basicStatistics.intelligence.GetCurrentValue();
+        float dexterityCurr = battleStatistics.basicStatistics.dexterity.GetCurrentValue();
         characterUIView.UpdateLevelText(characterInformation._Level);
-        characterUIView.UpdateBasicStatsUI(battleStatistics.generalStats["Strenght"].CurrentValue, battleStatistics.generalStats["Vitality"].CurrentValue, battleStatistics.generalStats["Intelligence"].CurrentValue, battleStatistics.generalStats["Dexterity"].CurrentValue);
+        characterUIView.UpdateBasicStatsUI(strenghtCurr, vitalityCurr, intelligenceCurr, dexterityCurr);
     }
 
     private void GetPlayerComponents()
