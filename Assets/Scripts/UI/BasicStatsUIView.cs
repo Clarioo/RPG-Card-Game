@@ -15,19 +15,10 @@ public class BasicStatsUIView : MonoBehaviour
     }
     public void UpdateBasicStatsUI(BasicStatistics basicStatistics)
     {
-        strenghtTxt.text = basicStatistics.strenght.GetCurrentValue().ToString();
-        vitalityTxt.text = basicStatistics.vitality.GetCurrentValue().ToString();
-        intelligenceTxt.text = basicStatistics.intelligence.GetCurrentValue().ToString();
-        dexterityTxt.text = basicStatistics.dexterity.GetCurrentValue().ToString();
+        strenghtTxt.text = basicStatistics.Strenght.GetCurrentValue().ToString();
+        vitalityTxt.text = basicStatistics.Vitality.GetCurrentValue().ToString();
+        intelligenceTxt.text = basicStatistics.Intelligence.GetCurrentValue().ToString();
+        dexterityTxt.text = basicStatistics.Dexterity.GetCurrentValue().ToString();
     }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

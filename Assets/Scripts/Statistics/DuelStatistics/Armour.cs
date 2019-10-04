@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Armour : Statistic
 {
-    public Armour(float baseValue, float currentValue)
+    public Armour(float baseValue)
     {
         Name = "Armour";
         Type = "Duel";
-        BaseValue = baseValue;
-        CurrentValue = currentValue;
+        BaseValue = CurrentValue = baseValue;
     }
 }

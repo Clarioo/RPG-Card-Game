@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Intelligence : Statistic
 {
-    public Intelligence(float baseValue, float currentValue)
+    public Intelligence(float baseValue)
     {
         Name = "Intelligence";
         Type = "General";
-        BaseValue = baseValue;
-        CurrentValue = currentValue;
+        BaseValue = CurrentValue = baseValue;
     }
     public float IncreaseCurrentValue(float addedIntelligence)
     {

@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class AttackDamage : Statistic
 {
-    public AttackDamage(float baseValue, float currentValue)
+    public AttackDamage(float baseValue)
     {
         Name = "AttackDamage";
         Type = "Duel";
-        BaseValue = baseValue;
-        CurrentValue = currentValue;
+        BaseValue = CurrentValue = baseValue;
     }
 }

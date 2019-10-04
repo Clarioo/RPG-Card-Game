@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Dexterity : Statistic
 {
-    public Dexterity(float baseValue, float currentValue)
+    public Dexterity(float baseValue)
     {
         Name = "Dexterity";
         Type = "General";
-        BaseValue = baseValue;
-        CurrentValue = currentValue;
+        BaseValue = CurrentValue = baseValue;
     }
     public float IncreaseCurrentValue(float addedDexterity)
     {

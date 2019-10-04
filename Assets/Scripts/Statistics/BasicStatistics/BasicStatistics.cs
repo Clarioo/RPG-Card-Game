@@ -4,17 +4,31 @@ using UnityEngine;
 
 public class BasicStatistics : MonoBehaviour
 {
-    public Strenght strenght;
-    public Vitality vitality;
-    public Intelligence intelligence;
-    public Dexterity dexterity;
-    
-    public BasicStatistics(float strenghtValue, float vitalityValue, float intelligenceValue, float dexterityValue)
+    Strenght strenght;
+    Vitality vitality;
+    Intelligence intelligence;
+    Dexterity dexterity;
+
+    public Strenght Strenght { get { return strenght; } set { strenght = value; } }
+    public Vitality Vitality { get { return vitality; } set { vitality = value; } }
+    public Intelligence Intelligence { get { return intelligence; } set { intelligence = value; } }
+    public Dexterity Dexterity { get { return dexterity; } set { dexterity = value; } }
+
+    StatisticsLevelUpdate statisticsLevelUpdate;
+
+
+    public BasicStatistics(StatisticsLevelUpdate statisticsLevelUpdate)
     {
-        strenght = new Strenght(strenghtValue, strenghtValue);
-        vitality = new Vitality(vitalityValue, vitalityValue);
-        intelligence = new Intelligence(intelligenceValue, intelligenceValue);
-        dexterity = new Dexterity(dexterityValue, dexterityValue);
+        this.statisticsLevelUpdate = statisticsLevelUpdate;
+        CreateBasicStats();
+    }
+
+    private void CreateBasicStats()
+    {
+        strenght = new Strenght(statisticsLevelUpdate.StrenghtMultiplier);
+        vitality = new Vitality(statisticsLevelUpdate.VitalityMultiplier);
+        intelligence = new Intelligence(statisticsLevelUpdate.IntelligenceMultiplier);
+        dexterity = new Dexterity(statisticsLevelUpdate.DexterityMultiplier);
     }
     public void UpdateBaseStrenght(float level, float multiplier)
     {
@@ -31,6 +45,13 @@ public class BasicStatistics : MonoBehaviour
     public void UpdateBaseDexterity(float level, float multiplier)
     {
         dexterity.UpdateBaseValue(level, multiplier);
+    }
+    public void UpdateStatsBasedOnLevel(float level, StatisticsLevelUpdate statisticsLevelUpdate)
+    {
+        Strenght.UpdateBaseValue(level, statisticsLevelUpdate.StrenghtMultiplier);
+        Vitality.UpdateBaseValue(level, statisticsLevelUpdate.VitalityMultiplier);
+        Intelligence.UpdateBaseValue(level, statisticsLevelUpdate.IntelligenceMultiplier);
+        Dexterity.UpdateBaseValue(level, statisticsLevelUpdate.DexterityMultiplier);
     }
     public void UpdateCurrentStatsBasedOnBaseStats()
     {

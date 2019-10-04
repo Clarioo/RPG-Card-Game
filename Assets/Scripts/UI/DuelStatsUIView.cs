@@ -13,10 +13,10 @@ public class DuelStatsUIView : MonoBehaviour
     
     public void SetDuelStatsValuesOnUI(DuelStatistics duelStatistics)
     {
-        attackDmgTxt.text = duelStatistics.attackDamage.GetCurrentValue().ToString();
-        armourTxt.text = duelStatistics.armour.GetCurrentValue().ToString();
-        healthTxt.text = duelStatistics.health.GetCurrentValue().ToString();
-        manaTxt.text = duelStatistics.mana.GetCurrentValue().ToString();
+        attackDmgTxt.text = duelStatistics.AttackDamage.GetCurrentValue().ToString();
+        armourTxt.text = duelStatistics.Armour.GetCurrentValue().ToString();
+        healthTxt.text = duelStatistics.Health.GetCurrentValue().ToString();
+        manaTxt.text = duelStatistics.Mana.GetCurrentValue().ToString();
     }
     
 }

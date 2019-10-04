@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Vitality : Statistic
 {
-    public Vitality(float baseValue, float currentValue)
+    public Vitality(float baseValue)
     {
         Name = "Vitality";
         Type = "General";
-        BaseValue = baseValue;
-        CurrentValue = currentValue;
+        BaseValue = CurrentValue = baseValue;
     }
 
     public float IncreaseCurrentValue(float addedVitality)

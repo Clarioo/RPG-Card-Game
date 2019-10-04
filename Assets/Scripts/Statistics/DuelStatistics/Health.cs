@@ -10,12 +10,10 @@ public class Health : Statistic
         get { return maxHealt; }
         set { maxHealt = value; }
     }
-    public Health(float baseValue, float currentValue)
+    public Health(float baseValue)
     {
         Name = "Health";
         Type = "Duel";
-        BaseValue = baseValue;
-        CurrentValue = currentValue;
-        MaxHealth = currentValue;
+        BaseValue = CurrentValue = MaxHealth = baseValue;
     }
 }

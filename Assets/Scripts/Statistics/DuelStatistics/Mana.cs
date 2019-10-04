@@ -11,12 +11,10 @@ public class Mana : Statistic
         set { maxMana = value; }
     }
 
-    public Mana(float baseValue, float currentValue)
+    public Mana(float baseValue)
     {
         Name = "Mana";
         Type = "Duel";
-        BaseValue = baseValue;
-        CurrentValue = currentValue;
-        MaxMana = CurrentValue;
+        BaseValue = CurrentValue = MaxMana = baseValue;
     }
 }
