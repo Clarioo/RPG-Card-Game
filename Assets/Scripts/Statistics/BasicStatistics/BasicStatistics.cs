@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicStatistics : MonoBehaviour
+public class BasicStatistics 
 {
     Strenght strenght;
     Vitality vitality;
@@ -14,12 +14,16 @@ public class BasicStatistics : MonoBehaviour
     public Intelligence Intelligence { get { return intelligence; } set { intelligence = value; } }
     public Dexterity Dexterity { get { return dexterity; } set { dexterity = value; } }
 
-    StatisticsLevelUpdate statisticsLevelUpdate;
+    StatisticsLevelUpdater statisticsLevelUpdate;
+
+    BasicStatsUIView basicStatsUIView;
 
 
-    public BasicStatistics(StatisticsLevelUpdate statisticsLevelUpdate)
+    public BasicStatistics(StatisticsLevelUpdater statisticsLevelUpdate, BasicStatsUIView basicStatsUIView)
     {
         this.statisticsLevelUpdate = statisticsLevelUpdate;
+        this.basicStatsUIView = basicStatsUIView;
+
         CreateBasicStats();
     }
 
@@ -46,12 +50,14 @@ public class BasicStatistics : MonoBehaviour
     {
         dexterity.UpdateBaseValue(level, multiplier);
     }
-    public void UpdateStatsBasedOnLevel(float level, StatisticsLevelUpdate statisticsLevelUpdate)
+    public void UpdateStatsBasedOnLevel(float level, StatisticsLevelUpdater statisticsLevelUpdate)
     {
         Strenght.UpdateBaseValue(level, statisticsLevelUpdate.StrenghtMultiplier);
         Vitality.UpdateBaseValue(level, statisticsLevelUpdate.VitalityMultiplier);
         Intelligence.UpdateBaseValue(level, statisticsLevelUpdate.IntelligenceMultiplier);
         Dexterity.UpdateBaseValue(level, statisticsLevelUpdate.DexterityMultiplier);
+        UpdateCurrentStatsBasedOnBaseStats();
+        basicStatsUIView.UpdateBasicStatsUI(this);
     }
     public void UpdateCurrentStatsBasedOnBaseStats()
     {
@@ -60,5 +66,8 @@ public class BasicStatistics : MonoBehaviour
         intelligence.CurrentValue = intelligence.GetBaseValue();
         dexterity.CurrentValue = dexterity.GetBaseValue();
     }
+
+    
+
 
 }

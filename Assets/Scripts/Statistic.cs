@@ -28,4 +28,5 @@ public class Statistic {
         BaseValue = lvl * multiplier;
         return GetBaseValue();
     }
+
 }

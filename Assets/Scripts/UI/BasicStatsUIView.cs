@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BasicStatsUIView : MonoBehaviour
+public class BasicStatsUIView : UIUpdater
 {
     [SerializeField] Text levelTxt;
     [SerializeField] Text strenghtTxt, vitalityTxt, intelligenceTxt, dexterityTxt;
 
+    BasicStatistics basicStatistics;
 
     public void UpdateLevelText(int level)
     {
@@ -15,10 +16,10 @@ public class BasicStatsUIView : MonoBehaviour
     }
     public void UpdateBasicStatsUI(BasicStatistics basicStatistics)
     {
-        strenghtTxt.text = basicStatistics.Strenght.GetCurrentValue().ToString();
-        vitalityTxt.text = basicStatistics.Vitality.GetCurrentValue().ToString();
-        intelligenceTxt.text = basicStatistics.Intelligence.GetCurrentValue().ToString();
-        dexterityTxt.text = basicStatistics.Dexterity.GetCurrentValue().ToString();
+        UpdateStatisticTextValue(strenghtTxt, basicStatistics.Strenght);
+        UpdateStatisticTextValue(vitalityTxt, basicStatistics.Vitality);
+        UpdateStatisticTextValue(intelligenceTxt, basicStatistics.Intelligence);
+        UpdateStatisticTextValue(dexterityTxt, basicStatistics.Dexterity);
     }
     
 }

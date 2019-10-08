@@ -6,66 +6,44 @@ public class Character : Playable
 {
     CharacterInformation characterInformation;
     BattleStatistics battleStatistics;
-    StatisticsLevelUpdate statisticsLevelUpdate;
+    StatisticsLevelUpdater statisticsLevelUpdater;
     CharacterUIView characterUIView;
+
     BasicStatsUIView basicStatsUIView;
     DuelStatsUIView duelStatsUIView;
+    
 
     private void Start()
     {
         SetPlayerComponents();
         InitializeBattleStatisticOnGameStart();
-        UpdateStatisticUI();
     }
 
     private void InitializeBattleStatisticOnGameStart()
     {
-        battleStatistics = new BattleStatistics();
-        battleStatistics.basicStatistics = new BasicStatistics(statisticsLevelUpdate);
-        InitializeDuelStatistics();
-    }
-
-    private void InitializeDuelStatistics()
-    {
-        battleStatistics.duelStatistics = new DuelStatistics(statisticsLevelUpdate, characterInformation._Level);
-    }
-    public void UpdateStatisticsBasedOnLevel()
-    {
-        battleStatistics.basicStatistics.UpdateStatsBasedOnLevel(characterInformation._Level, statisticsLevelUpdate);
-        battleStatistics.basicStatistics.UpdateCurrentStatsBasedOnBaseStats();
-        UpdateDuelStats();
-    }
-    public void UpdateDuelStats()
-    {
-        battleStatistics.duelStatistics.UpdateDuelStatistics(statisticsLevelUpdate, characterInformation._Level);
+        battleStatistics = new BattleStatistics(statisticsLevelUpdater, characterInformation);
+        battleStatistics.InitializeBattleStatisics(basicStatsUIView, duelStatsUIView);
+        Debug.Log(battleStatistics);
     }
 
 
     public void LevelUp()
     {
-        characterInformation._Level++;
-        UpdateStatisticsBasedOnLevel();
-        UpdateStatisticUI();
+        characterInformation.IncreaseLevel();
+        battleStatistics.UpdateStatisticsBasedOnLevel();
     }
     public void LevelDown()
     {
-        characterInformation._Level--;
-        UpdateStatisticsBasedOnLevel();
-        UpdateStatisticUI();
-    }
-    private void UpdateStatisticUI()
-    {
-        basicStatsUIView.UpdateLevelText(characterInformation._Level);
-        basicStatsUIView.UpdateBasicStatsUI(battleStatistics.basicStatistics);
-        duelStatsUIView.SetDuelStatsValuesOnUI(battleStatistics.duelStatistics);
+        characterInformation.DecreaseLevel();
+        battleStatistics.UpdateStatisticsBasedOnLevel();
     }
 
     private void SetPlayerComponents()
     {
         characterInformation = GetComponent<CharacterInformation>();
-        battleStatistics = GetComponent<BattleStatistics>();
-        statisticsLevelUpdate = GetComponent<StatisticsLevelUpdate>();
+        statisticsLevelUpdater = GetComponent<StatisticsLevelUpdater>();
         characterUIView = GetComponent<CharacterUIView>();
+
         basicStatsUIView = GetComponent<BasicStatsUIView>();
         duelStatsUIView = GetComponent<DuelStatsUIView>();
     }

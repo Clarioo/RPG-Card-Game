@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatisticsLevelUpdate : MonoBehaviour
+public class StatisticsLevelUpdater : MonoBehaviour
 {
     [SerializeField] float strenghtMultiplier, vitalityMultiplier, intelligenceMultiplier, dexterityMultiplier;
     [SerializeField] float baseAttackDamage, attackDamageMultiplier;

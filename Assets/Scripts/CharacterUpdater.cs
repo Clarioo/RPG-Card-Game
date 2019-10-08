@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Playable : MonoBehaviour
+public interface CharacterUpdater
 {
-
-    
-    
+    void IncreaseLevel();
+    void DecreaseLevel();
 }

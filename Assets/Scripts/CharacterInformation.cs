@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterInformation : MonoBehaviour
+public class CharacterInformation : MonoBehaviour, CharacterUpdater
 {
     [SerializeField] string _name;
     [SerializeField] string _class;
@@ -28,4 +28,14 @@ public class CharacterInformation : MonoBehaviour
                 level = value;
             }
     }
+
+    public void IncreaseLevel()
+    {
+        _Level++;
+    }
+    public void DecreaseLevel()
+    {
+        _Level--;
+    }
+    
 }

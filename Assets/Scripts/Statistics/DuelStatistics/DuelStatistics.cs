@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DuelStatistics : MonoBehaviour
+public class DuelStatistics
 {
     AttackDamage attackDamage;
     Armour armour;
@@ -14,41 +14,40 @@ public class DuelStatistics : MonoBehaviour
     public Health Health { get { return health; } set { health = value; } }
     public Mana Mana { get { return mana; } set { mana = value; } }
 
-    StatisticsLevelUpdate statisticsLevelUpdate;
-    float level;
-
+    StatisticsLevelUpdater statisticsLevelUpdater;
     DuelStatsUIView duelStatsUIView;
 
-    public DuelStatistics(StatisticsLevelUpdate statisticsLevelUpdate, float level)
+    float level;
+
+    public DuelStatistics(StatisticsLevelUpdater statisticsLevelUpdate, float level, DuelStatsUIView duelStatsUIView)
     {
-        this.statisticsLevelUpdate = statisticsLevelUpdate;
+        this.statisticsLevelUpdater = statisticsLevelUpdate;
         this.level = level;
+        this.duelStatsUIView = duelStatsUIView;
         CreateDuelStatistics();
     }
 
     private void CreateDuelStatistics()
     {
-        AttackDamage = new AttackDamage(statisticsLevelUpdate.GetBaseCalculatedAttackDamage(level));
-        Armour = new Armour(statisticsLevelUpdate.GetBaseCalculatedArmour(level));
-        Health = new Health(statisticsLevelUpdate.GetBaseCalculatedHealth(level));
-        Mana = new Mana(statisticsLevelUpdate.GetBaseCalculatedMana(level));
+        AttackDamage = new AttackDamage(statisticsLevelUpdater.GetBaseCalculatedAttackDamage(level));
+        Armour = new Armour(statisticsLevelUpdater.GetBaseCalculatedArmour(level));
+        Health = new Health(statisticsLevelUpdater.GetBaseCalculatedHealth(level));
+        Mana = new Mana(statisticsLevelUpdater.GetBaseCalculatedMana(level));
+        duelStatsUIView.SetDuelStatsValuesOnUI(this);
     }
 
-    public void UpdateDuelStatistics(StatisticsLevelUpdate _statisticsLevelUpdate, float _level)
+    public void UpdateDuelStatistics(float level)
     {
-        level = _level;
-        statisticsLevelUpdate = _statisticsLevelUpdate;
+        this.level = level;      
 
-        AttackDamage.CurrentValue = AttackDamage.BaseValue = statisticsLevelUpdate.GetBaseCalculatedAttackDamage(level);
-        Armour.CurrentValue = Armour.BaseValue = statisticsLevelUpdate.GetBaseCalculatedArmour(level);
-        Health.CurrentValue = Health.BaseValue = statisticsLevelUpdate.GetBaseCalculatedHealth(level);
-        Mana.CurrentValue = Mana.BaseValue = statisticsLevelUpdate.GetBaseCalculatedMana(level);
+        AttackDamage.CurrentValue = AttackDamage.BaseValue = statisticsLevelUpdater.GetBaseCalculatedAttackDamage(level);
+        Armour.CurrentValue = Armour.BaseValue = statisticsLevelUpdater.GetBaseCalculatedArmour(level);
+        Health.CurrentValue = Health.BaseValue = statisticsLevelUpdater.GetBaseCalculatedHealth(level);
+        Mana.CurrentValue = Mana.BaseValue = statisticsLevelUpdater.GetBaseCalculatedMana(level);
+        duelStatsUIView.SetDuelStatsValuesOnUI(this);
     }
 
-    private void Awake()
-    {
-        duelStatsUIView = GetComponent<DuelStatsUIView>();
-    }
+    
 
 
 
