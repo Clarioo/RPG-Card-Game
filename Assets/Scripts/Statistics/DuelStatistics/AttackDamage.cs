@@ -7,7 +7,7 @@ public class AttackDamage : Statistic
     public AttackDamage(float baseValue)
     {
         Name = "AttackDamage";
-        Type = "Duel";
+        Type = StatType.Duel;
         BaseValue = CurrentValue = baseValue;
     }
 }

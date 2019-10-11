@@ -7,12 +7,9 @@ public class Dexterity : Statistic
     public Dexterity(float baseValue)
     {
         Name = "Dexterity";
-        Type = "General";
+        Type = StatType.General;
         BaseValue = CurrentValue = baseValue;
     }
-    public float IncreaseCurrentValue(float addedDexterity)
-    {
-        return CurrentValue + addedDexterity;
-    }
+    
 }
 

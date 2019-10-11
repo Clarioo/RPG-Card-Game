@@ -7,7 +7,7 @@ public class Armour : Statistic
     public Armour(float baseValue)
     {
         Name = "Armour";
-        Type = "Duel";
+        Type = StatType.Duel;
         BaseValue = CurrentValue = baseValue;
     }
 }

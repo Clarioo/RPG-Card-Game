@@ -14,7 +14,7 @@ public class Mana : Statistic
     public Mana(float baseValue)
     {
         Name = "Mana";
-        Type = "Duel";
+        Type = StatType.Duel;
         BaseValue = CurrentValue = MaxMana = baseValue;
     }
 }

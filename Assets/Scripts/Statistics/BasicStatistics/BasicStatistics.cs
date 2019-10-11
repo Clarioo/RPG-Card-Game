@@ -14,41 +14,22 @@ public class BasicStatistics
     public Intelligence Intelligence { get { return intelligence; } set { intelligence = value; } }
     public Dexterity Dexterity { get { return dexterity; } set { dexterity = value; } }
 
-    StatisticsLevelUpdater statisticsLevelUpdate;
-
+    StatisticsLevelUpdater statisticsLevelUpdater;
     BasicStatsUIView basicStatsUIView;
 
-
-    public BasicStatistics(StatisticsLevelUpdater statisticsLevelUpdate, BasicStatsUIView basicStatsUIView)
+    public BasicStatistics(StatisticsLevelUpdater statisticsLevelUpdater, BasicStatsUIView basicStatsUIView)
     {
-        this.statisticsLevelUpdate = statisticsLevelUpdate;
+        this.statisticsLevelUpdater = statisticsLevelUpdater;
         this.basicStatsUIView = basicStatsUIView;
-
         CreateBasicStats();
     }
 
     private void CreateBasicStats()
     {
-        strenght = new Strenght(statisticsLevelUpdate.StrenghtMultiplier);
-        vitality = new Vitality(statisticsLevelUpdate.VitalityMultiplier);
-        intelligence = new Intelligence(statisticsLevelUpdate.IntelligenceMultiplier);
-        dexterity = new Dexterity(statisticsLevelUpdate.DexterityMultiplier);
-    }
-    public void UpdateBaseStrenght(float level, float multiplier)
-    {
-        strenght.UpdateBaseValue(level, multiplier);
-    }
-    public void UpdateBaseVitality(float level, float multiplier)
-    {
-        vitality.UpdateBaseValue(level, multiplier);
-    }
-    public void UpdateBaseIntelligence(float level, float multiplier)
-    {
-        intelligence.UpdateBaseValue(level, multiplier);
-    }
-    public void UpdateBaseDexterity(float level, float multiplier)
-    {
-        dexterity.UpdateBaseValue(level, multiplier);
+        strenght = new Strenght(statisticsLevelUpdater.StrenghtMultiplier);
+        vitality = new Vitality(statisticsLevelUpdater.VitalityMultiplier);
+        intelligence = new Intelligence(statisticsLevelUpdater.IntelligenceMultiplier);
+        dexterity = new Dexterity(statisticsLevelUpdater.DexterityMultiplier);
     }
     public void UpdateStatsBasedOnLevel(float level, StatisticsLevelUpdater statisticsLevelUpdate)
     {
@@ -61,10 +42,10 @@ public class BasicStatistics
     }
     public void UpdateCurrentStatsBasedOnBaseStats()
     {
-        strenght.CurrentValue = strenght.GetBaseValue();
-        vitality.CurrentValue = vitality.GetBaseValue();
-        intelligence.CurrentValue = intelligence.GetBaseValue();
-        dexterity.CurrentValue = dexterity.GetBaseValue();
+        Strenght.CurrentValue = Strenght.GetBaseValue();
+        Vitality.CurrentValue = Vitality.GetBaseValue();
+        Intelligence.CurrentValue = Intelligence.GetBaseValue();
+        Dexterity.CurrentValue = Dexterity.GetBaseValue();
     }
 
     

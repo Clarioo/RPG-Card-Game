@@ -7,12 +7,8 @@ public class Vitality : Statistic
     public Vitality(float baseValue)
     {
         Name = "Vitality";
-        Type = "General";
+        Type = StatType.General;
         BaseValue = CurrentValue = baseValue;
     }
 
-    public float IncreaseCurrentValue(float addedVitality)
-    {
-        return CurrentValue + addedVitality;
-    }
 }

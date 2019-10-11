@@ -6,11 +6,12 @@ public class Character : Playable
 {
     CharacterInformation characterInformation;
     BattleStatistics battleStatistics;
-    StatisticsLevelUpdater statisticsLevelUpdater;
+    [SerializeField] StatisticsLevelUpdater statisticsLevelUpdater;
     CharacterUIView characterUIView;
 
     BasicStatsUIView basicStatsUIView;
     DuelStatsUIView duelStatsUIView;
+    ElementalStatsUIView elementalStatsUIView;
     
 
     private void Start()
@@ -22,8 +23,7 @@ public class Character : Playable
     private void InitializeBattleStatisticOnGameStart()
     {
         battleStatistics = new BattleStatistics(statisticsLevelUpdater, characterInformation);
-        battleStatistics.InitializeBattleStatisics(basicStatsUIView, duelStatsUIView);
-        Debug.Log(battleStatistics);
+        battleStatistics.InitializeBattleStatisics(basicStatsUIView, duelStatsUIView, elementalStatsUIView);
     }
 
 
@@ -41,11 +41,11 @@ public class Character : Playable
     private void SetPlayerComponents()
     {
         characterInformation = GetComponent<CharacterInformation>();
-        statisticsLevelUpdater = GetComponent<StatisticsLevelUpdater>();
         characterUIView = GetComponent<CharacterUIView>();
 
         basicStatsUIView = GetComponent<BasicStatsUIView>();
         duelStatsUIView = GetComponent<DuelStatsUIView>();
+        elementalStatsUIView = GetComponent<ElementalStatsUIView>();
     }
 
 

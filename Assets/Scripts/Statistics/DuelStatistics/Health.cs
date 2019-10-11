@@ -13,7 +13,7 @@ public class Health : Statistic
     public Health(float baseValue)
     {
         Name = "Health";
-        Type = "Duel";
+        Type = StatType.Duel;
         BaseValue = CurrentValue = MaxHealth = baseValue;
     }
 }

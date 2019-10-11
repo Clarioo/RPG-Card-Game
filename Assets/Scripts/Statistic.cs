@@ -5,7 +5,7 @@ using UnityEngine;
 public class Statistic {
 
     public string Name { get; set; }
-    public string Type { get; set; }
+    public StatType Type { get; set; }
     public float BaseValue { get; set; }
     public float CurrentValue { get; set; }
 
@@ -27,6 +27,18 @@ public class Statistic {
     {
         BaseValue = lvl * multiplier;
         return GetBaseValue();
+    }
+    public float IncreaseCurrentValue(float addedValue)
+    {
+        CurrentValue += addedValue;
+        return GetCurrentValue();
+    }
+    public enum StatType
+    {
+        General,
+        Duel,
+        ElementalAttack,
+        ElementalDefense
     }
 
 }

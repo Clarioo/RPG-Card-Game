@@ -6,8 +6,8 @@ public class BattleStatistics {
 
     BasicStatistics basicStatistics;
     DuelStatistics duelStatistics;
-    Dictionary<string, Statistic> elementalAttack;
-    Dictionary<string, Statistic> elementalDefense;
+    ElementalAttackStats elementalAttackStats;
+    ElementalDefenseStats elementalDefenseStats;
 
     StatisticsLevelUpdater statisticsLevelUpdater;
     CharacterInformation characterInformation;
@@ -18,20 +18,32 @@ public class BattleStatistics {
         this.characterInformation = characterInformation;
     }
 
-    public void InitializeBattleStatisics(BasicStatsUIView basicStatsUIView, DuelStatsUIView duelStatsUIView)
+    public void InitializeBattleStatisics(BasicStatsUIView basicStatsUIView, DuelStatsUIView duelStatsUIView, ElementalStatsUIView elementalStatsUIView)
     {
         basicStatistics = new BasicStatistics(statisticsLevelUpdater, basicStatsUIView);
         duelStatistics = new DuelStatistics(statisticsLevelUpdater, characterInformation._Level, duelStatsUIView);
+        elementalAttackStats = new ElementalAttackStats(statisticsLevelUpdater, elementalStatsUIView);
+        elementalDefenseStats = new ElementalDefenseStats(statisticsLevelUpdater, elementalStatsUIView);
     }
     public void UpdateStatisticsBasedOnLevel()
     {
         basicStatistics.UpdateStatsBasedOnLevel(characterInformation._Level, statisticsLevelUpdater);
         basicStatistics.UpdateCurrentStatsBasedOnBaseStats();
         UpdateDuelStats();
+        UpdateElementalAttackStats();
+        UpdateElementalDefenseStats();
     }
     public void UpdateDuelStats()
     {
         duelStatistics.UpdateDuelStatistics(characterInformation._Level);
+    }
+    public void UpdateElementalAttackStats()
+    {
+        elementalAttackStats.UpdateStatsBasedOnLevel(characterInformation._Level);
+    }
+    public void UpdateElementalDefenseStats()
+    {
+        elementalDefenseStats.UpdateStatsBasedOnLevel(characterInformation._Level);
     }
 
     
