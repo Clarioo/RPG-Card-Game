@@ -24,3 +24,11 @@ MonoBehaviour:
   healthMultiplier: 5
   baseMana: 15
   manaMultiplier: 5
+  fireAttackMultiplier: 1
+  waterAttackMultiplier: 1
+  electroAttackMultiplier: 3
+  poisonAttackMultiplier: 1
+  fireDefenseMultiplier: 1
+  waterDefenseMultiplier: 1
+  electroDefenseMultiplier: 2
+  poisonDefenseMultiplier: 1

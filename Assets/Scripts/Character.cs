@@ -11,6 +11,7 @@ public class Character : Playable
 
     BasicStatsUIView basicStatsUIView;
     DuelStatsUIView duelStatsUIView;
+    ElementalStatsUIView elementalStatsUIView;
     
 
     private void Start()
@@ -22,7 +23,7 @@ public class Character : Playable
     private void InitializeBattleStatisticOnGameStart()
     {
         battleStatistics = new BattleStatistics(statisticsLevelUpdater, characterInformation);
-        battleStatistics.InitializeBattleStatisics(basicStatsUIView, duelStatsUIView);
+        battleStatistics.InitializeBattleStatisics(basicStatsUIView, duelStatsUIView, elementalStatsUIView);
     }
 
 
@@ -44,6 +45,7 @@ public class Character : Playable
 
         basicStatsUIView = GetComponent<BasicStatsUIView>();
         duelStatsUIView = GetComponent<DuelStatsUIView>();
+        elementalStatsUIView = GetComponent<ElementalStatsUIView>();
     }
 
 

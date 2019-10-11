@@ -3349,6 +3349,7 @@ GameObject:
   - component: {fileID: 1115339648}
   - component: {fileID: 1115339650}
   - component: {fileID: 1115339649}
+  - component: {fileID: 1115339643}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3356,6 +3357,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1115339643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115339642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abe69d90bfd549f46863b0dc01592ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireAttackTxt: {fileID: 1130348953}
+  waterAttackTxt: {fileID: 1633728790}
+  electroAttackTxt: {fileID: 1154966587}
+  poisonAttackTxt: {fileID: 1926013667}
+  fireDefenseTxt: {fileID: 1122279948}
+  waterDefenseTxt: {fileID: 1413978403}
+  electroDefenseTxt: {fileID: 813902959}
+  poisonDefenseTxt: {fileID: 1047134260}
 --- !u!114 &1115339644
 MonoBehaviour:
   m_ObjectHideFlags: 0
