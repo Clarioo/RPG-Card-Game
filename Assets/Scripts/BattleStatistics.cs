@@ -6,8 +6,8 @@ public class BattleStatistics {
 
     BasicStatistics basicStatistics;
     DuelStatistics duelStatistics;
-    Dictionary<string, Statistic> elementalAttack;
-    Dictionary<string, Statistic> elementalDefense;
+    ElementalAttackStats elementalAttackStats;
+    ElementalDefenseStats ElementalDefenseStats;
 
     StatisticsLevelUpdater statisticsLevelUpdater;
     CharacterInformation characterInformation;

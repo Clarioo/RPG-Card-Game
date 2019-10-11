@@ -7,12 +7,9 @@ public class Intelligence : Statistic
     public Intelligence(float baseValue)
     {
         Name = "Intelligence";
-        Type = "General";
+        Type = StatType.General;
         BaseValue = CurrentValue = baseValue;
     }
-    public float IncreaseCurrentValue(float addedIntelligence)
-    {
-        return CurrentValue + addedIntelligence;
-    }
+    
 }
 

@@ -38,8 +38,6 @@ public class DuelStatistics
 
     public void UpdateDuelStatistics(float level)
     {
-        this.level = level;      
-
         AttackDamage.CurrentValue = AttackDamage.BaseValue = statisticsLevelUpdater.GetBaseCalculatedAttackDamage(level);
         Armour.CurrentValue = Armour.BaseValue = statisticsLevelUpdater.GetBaseCalculatedArmour(level);
         Health.CurrentValue = Health.BaseValue = statisticsLevelUpdater.GetBaseCalculatedHealth(level);

@@ -7,13 +7,8 @@ public class Strenght : Statistic
     public Strenght(float baseValue)
     {
         Name = "Strenght";
-        Type = "General";
+        Type = StatType.General;
         BaseValue = CurrentValue = baseValue;
         
-    }
-    
-    public float IncreaseCurrentValue(float addedStrenght)
-    {
-        return CurrentValue + addedStrenght;
     }
 }

@@ -2,46 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatisticsLevelUpdater : MonoBehaviour
+[CreateAssetMenu(fileName = "New Character Stats", menuName = "StatisticLevelUpdater" )]
+public class StatisticsLevelUpdater : ScriptableObject
 {
-    [SerializeField] float strenghtMultiplier, vitalityMultiplier, intelligenceMultiplier, dexterityMultiplier;
-    [SerializeField] float baseAttackDamage, attackDamageMultiplier;
-    [SerializeField] float baseArmour, armourMultiplier;
-    [SerializeField] float baseHealth, healthMultiplier;
-    [SerializeField] float baseMana, manaMultiplier;
+    public float StrenghtMultiplier { get; private set; }
+    public float VitalityMultiplier { get; private set; }
+    public float IntelligenceMultiplier { get; private set; }
+    public float DexterityMultiplier { get; private set; }
 
-    public float StrenghtMultiplier
-    {
-        get { return strenghtMultiplier; }
-    }
-    public float VitalityMultiplier
-    {
-        get { return vitalityMultiplier; }
-    }
-    public float IntelligenceMultiplier
-    {
-        get { return intelligenceMultiplier; }
-    }
-    public float DexterityMultiplier
-    {
-        get { return dexterityMultiplier; }
-    }
+    public float BaseAttackDamage { get; private set; }
+    public float AttackDamageMultiplier { get; private set; }
+
+    public float BaseArmour { get; private set; }
+    public float ArmourMultiplier { get; private set; }
+
+    public float BaseHealth { get; private set; }
+    public float HealthMultiplier { get; private set; }
+
+    public float BaseMana { get; private set; }
+    public float ManaMultiplier { get; private set; }
+
+    public float FireAttackMultiplier { get; private set; }
+    public float WaterAttackMultiplier { get; private set; }
+    public float ElectroAttackMultiplier { get; private set; }
+    public float PoisonAttackMultiplier { get; private set; }
+
+
     
     public float GetBaseCalculatedAttackDamage(float level)
     {
-        return baseAttackDamage + attackDamageMultiplier * level;
+        return BaseAttackDamage + AttackDamageMultiplier * level;
     }
     public float GetBaseCalculatedArmour(float level)
     {
-        return baseArmour + armourMultiplier * level;
+        return BaseArmour + ArmourMultiplier * level;
     }
     public float GetBaseCalculatedHealth(float level)
     {
-        return baseHealth + healthMultiplier * level;
+        return BaseHealth + HealthMultiplier * level;
     }
     public float GetBaseCalculatedMana(float level)
     {
-        return baseMana + manaMultiplier * level;
+        return BaseMana + ManaMultiplier * level;
     }
 
 }
