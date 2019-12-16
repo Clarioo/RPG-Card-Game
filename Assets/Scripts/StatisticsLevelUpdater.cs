@@ -10,6 +10,18 @@ public class StatisticsLevelUpdater : MonoBehaviour
     [SerializeField] float baseHealth, healthMultiplier;
     [SerializeField] float baseMana, manaMultiplier;
 
+    public Dictionary<string, float> BasicStatsMultipliers;
+
+    private void Start()
+    {
+        BasicStatsMultipliers = new Dictionary<string, float>
+        {
+            {"Strenght", StrenghtMultiplier },
+            {"Vitality", VitalityMultiplier },
+            {"Intelligence", IntelligenceMultiplier },
+            {"Dexterity", DexterityMultiplier }
+        };
+    }
     public float StrenghtMultiplier
     {
         get { return strenghtMultiplier; }
